@@ -1,76 +1,90 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Flex, Box } from 'rebass';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const Outter = styled.div`
-  width: 50rem;
-  height: 30rem;
+const Outter = styled(Box)`
+  width: 90%;
+  height: 100%;
   margin: 0 auto;
   border: 1px solid black;
-  background-color: black;
-  box-shadow: 1px 1px 1px 1px black;
+  background-color: #64c1d2;
+  box-shadow: 3px 3px 3px 3px #b3b1b0;
   margin-top: 5rem;
   border-radius: 10px;
+  text-align: center;
 `;
 
-const Inner = styled.div`
-  width: 48rem;
-  height: 28rem;
-  margin: 0 auto;
-  border: 1px solid black;
-  background-color: white;
-  padding: 0.5rem;
-`;
-
-const Img = styled.img`
-  cursor: pointer;
-  width: 20rem;
-  height: 20rem;
-  float: left;
-  margin-top: 2rem;
-`;
-
-const Main = styled.div`
-  background-color: #acadb0;
-  width: 48rem;
-  height: 26rem;
-  box-shadow: 1px 1px 1px 1px black;
-`;
 const Input = styled.input`
-  margin: 0.5rem, 0rem, 0.5rem, 0;
+  margin: 0.5rem, 0, 0.5rem, 0.5rem;
   padding: 0.5rem;
 `;
 
 const Button = styled.button`
-  margin-top: 13rem;
-  margin-left: 13rem;
-  float: left;
+  margin: 2rem;
   cursor: pointer;
   padding: 0.5rem;
 `;
-const Modal = props => (
-  <Flex width={1} mx={5} alignItems='center'>
-    <Outter>
-      <Inner>
-        <Main>
+const Img = styled.img`
+  min-width: 5rem;
+  cursor: pointer;
+  width: 30%;
+  height: 30%;
+  min-width: 3em;
+  float: left;
+  margin-top: 2rem;
+`;
+
+const Top = styled.h1`
+  position: absolute;
+  top: 10%;
+  left: 50%;
+`;
+
+const Bottom = styled.h1`
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+`;
+
+const Container = styled.div`
+  position: relative;
+  text-align: center;
+  color: white;
+`;
+
+class Modal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      image: props.img
+    };
+  }
+
+  render() {
+    return (
+      <Flex width={1} alignItems='center'>
+        <Outter>
           <Box width={1} mx={5} alignItems='center'>
-            <h1>
-              Hello
-              <Img src={props.img} alt='' />
-            </h1>
+            <Container>
+              <Img src={this.state.image} />
+              <Top>Top</Top>
+              <Bottom />
+            </Container>
           </Box>
-          <h2>Top Text</h2>
-          <Input id='1' placeholder='Top LINE OF MEME' />
-          <h2>Bottom Text</h2>
-          <Input id='2' placeholder='Bottom LINE OF MEME' />
+          <Box width={[1 / 2, 1]} alignItems='center'>
+            <h2>Top Text</h2>
+            <Input id='1' placeholder='Top LINE OF MEME' />
+            <h2>Bottom Text</h2>
+            <Input id='2' placeholder='Bottom LINE OF MEME' />
+          </Box>
           <Link to='/'>
             <Button>Home Page</Button>
           </Link>
-        </Main>
-      </Inner>
-    </Outter>
-  </Flex>
-);
+        </Outter>
+      </Flex>
+    );
+  }
+}
 
 export default Modal;

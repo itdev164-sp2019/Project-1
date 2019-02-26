@@ -1,4 +1,16 @@
 import React from 'react';
-import { BaseContainer } from '../BaseContainer';
+import styled from 'styled-components';
+import { Flex, Box } from 'rebass';
 
-export const Header = props => <BaseContainer as='header' {...props} />;
+const Outter = styled(Box)`
+  background-color: #c5c5c5;
+  height: 20%;
+  padding: 2rem;
+`;
+const Header = props => (
+  <Outter>
+    <h1>My Meme</h1>
+  </Outter>
+);
+
+export default Header;

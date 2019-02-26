@@ -4,12 +4,15 @@ import image2 from '../Images/Abstract_001.jpg';
 import image3 from '../Images/logo.svg';
 import './App.css';
 import styled from 'styled-components';
-import { Header } from '../components/Elements/Header/Index';
+import Header from '../components/Elements/Header/Header';
 import Home from '../components/Home/Home.js';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import Modal from '../components/Modal/Modal';
 
-const Main = styled.div``;
+const Main = styled.div`
+  background-color: '#5baeb5';
+  height: 80%;
+`;
 
 class App extends Component {
   constructor(props) {
@@ -33,7 +36,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className='App'>
-          <Header>My Meme</Header>
+          <Header />
           <Main>
             <Route
               exact={true}

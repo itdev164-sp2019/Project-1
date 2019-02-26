@@ -8,14 +8,18 @@ const Img = styled.img`
   width: 10rem;
   height: 20rem;
   float: left;
+  margin: 1rem;
+`;
+const Button = styled.button`
+  background-color: black;
 `;
 const Image = props => (
   <Link to='/Modal'>
-    <button onClick={() => props.click(props.index)}>
+    <Button onClick={() => props.click(props.index)}>
       <Box width={1} mx={5} alignItems='center'>
         <Img src={props.img} alt='' />
       </Box>
-    </button>
+    </Button>
   </Link>
 );
 export default Image;
