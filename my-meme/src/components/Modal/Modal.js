@@ -7,7 +7,7 @@ const Outter = styled(Box)`
   width: 90%;
   height: 100%;
   margin: 0 auto;
-  border: 1px solid black;
+  border: 1px solid white;
   background-color: #64c1d2;
   box-shadow: 3px 3px 3px 3px #b3b1b0;
   margin-top: 5rem;
@@ -25,53 +25,58 @@ const Button = styled.button`
   cursor: pointer;
   padding: 0.5rem;
 `;
-const Img = styled.img`
-  min-width: 5rem;
+const Img = styled.div`
   cursor: pointer;
   width: 30%;
-  height: 30%;
-  min-width: 3em;
+  height: 40vh;
   float: left;
   margin-top: 2rem;
+  position: relative;
+  background-position: center;
+  text-align: center;
+  background-repeat: no-repeat;
 `;
 
 const Top = styled.h1`
   position: absolute;
   top: 10%;
-  left: 50%;
+  left: 30%;
+  display: inline-block;
 `;
 
 const Bottom = styled.h1`
   position: absolute;
   bottom: 10%;
-  left: 50%;
+  left: 30%;
+  display: inline-block;
 `;
-
-const Container = styled.div`
-  position: relative;
-  text-align: center;
-  color: white;
-`;
-
+const Container = styled(Box)``;
 class Modal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      image: props.img
+      image: props.img,
+      topVal: 'Top',
+      bottomVal: 'Bottom'
     };
   }
 
+  changeText = e => {};
+
   render() {
+    const imageStyle = {
+      backgroundImage: 'url(' + this.state.image + ')',
+      backgroundSize: '100%'
+    };
     return (
       <Flex width={1} alignItems='center'>
         <Outter>
-          <Box width={1} mx={5} alignItems='center'>
-            <Container>
-              <Img src={this.state.image} />
-              <Top>Top</Top>
-              <Bottom />
-            </Container>
-          </Box>
+          <Container width={1} mx={5} alignItems='center'>
+            <Img style={imageStyle}>
+              <Top>{this.state.topVal}</Top>
+              <Bottom>{this.state.bottomVal}</Bottom>
+            </Img>
+          </Container>
           <Box width={[1 / 2, 1]} alignItems='center'>
             <h2>Top Text</h2>
             <Input id='1' placeholder='Top LINE OF MEME' />
