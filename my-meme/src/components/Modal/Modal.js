@@ -1,76 +1,90 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Flex, Box } from 'rebass';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import Form from '../Form/Form';
 
-const Outter = styled.div`
-  width: 50rem;
-  height: 30rem;
+const Outter = styled(Box)`
+  width: 90%;
   margin: 0 auto;
-  border: 1px solid black;
-  background-color: black;
-  box-shadow: 1px 1px 1px 1px black;
-  margin-top: 5rem;
+  border: 1px solid #656765;
+  background-color: #d6d2d1;
+  box-shadow: 5px 5px 5px 5px #404040;
   border-radius: 10px;
+  text-align: center;
+  margin-top: 1rem;
+  max-width: 900px;
 `;
 
-const Inner = styled.div`
-  width: 48rem;
-  height: 28rem;
+const Canvas = styled.canvas`
+  cursor: pointer;
+  width: 90%;
   margin: 0 auto;
-  border: 1px solid black;
-  background-color: white;
-  padding: 0.5rem;
-`;
-
-const Img = styled.img`
-  cursor: pointer;
-  width: 20rem;
-  height: 20rem;
-  float: left;
   margin-top: 2rem;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px 3px #404040;
 `;
 
-const Main = styled.div`
-  background-color: #acadb0;
-  width: 48rem;
-  height: 26rem;
-  box-shadow: 1px 1px 1px 1px black;
-`;
-const Input = styled.input`
-  margin: 0.5rem, 0rem, 0.5rem, 0;
-  padding: 0.5rem;
+const CanImg = styled.img`
+  display: none;
+  width: 150%;
 `;
 
-const Button = styled.button`
-  margin-top: 13rem;
-  margin-left: 13rem;
-  float: left;
-  cursor: pointer;
-  padding: 0.5rem;
-`;
-const Modal = props => (
-  <Flex width={1} mx={5} alignItems='center'>
-    <Outter>
-      <Inner>
-        <Main>
-          <Box width={1} mx={5} alignItems='center'>
-            <h1>
-              Hello
-              <Img src={props.img} alt='' />
-            </h1>
-          </Box>
-          <h2>Top Text</h2>
-          <Input id='1' placeholder='Top LINE OF MEME' />
-          <h2>Bottom Text</h2>
-          <Input id='2' placeholder='Bottom LINE OF MEME' />
-          <Link to='/'>
-            <Button>Home Page</Button>
-          </Link>
-        </Main>
-      </Inner>
-    </Outter>
-  </Flex>
-);
+class Modal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      image: props.img,
+      topVal: '',
+      bottomVal: ''
+    };
+  }
+  componentDidMount = () => {
+    const canvas = this.refs.canvas;
+    const ctx = canvas.getContext('2d');
+    const canvasImg = this.refs.image;
+    canvasImg.onload = () => {
+      ctx.drawImage(canvasImg, 0, 0, window.innerWidth, window.innerHeight);
+    };
+  };
+
+  componentDidUpdate = () => {
+    const canvas = this.refs.canvas;
+    const ctx = canvas.getContext('2d');
+    const canvasImg = this.refs.image;
+    ctx.drawImage(canvasImg, 0, 0, window.innerWidth, window.innerHeight);
+    ctx.font = ' 50px Electrolize';
+    ctx.fillText(this.state.topVal, 110, 75);
+    ctx.fillText(this.state.bottomVal, 110, 500);
+  };
+
+  changeText = e => {
+    this.setState({
+      [e.currentTarget.name]: e.currentTarget.value
+    });
+  };
+
+  render() {
+    const imageStyle = {
+      backgroundImage: 'url(' + this.state.image + ')',
+      backgroundSize: '100%'
+    };
+
+    return (
+      <Outter>
+        <Canvas
+          ref='canvas'
+          width={window.innerWidth}
+          height={window.innerHeight}
+        />
+        <CanImg ref='image' src={this.state.image} />
+        <Box>
+          <Form changeText={this.changeText} download={this.fillText} />
+        </Box>
+      </Outter>
+    );
+  }
+}
 
 export default Modal;
