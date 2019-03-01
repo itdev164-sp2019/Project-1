@@ -7,7 +7,7 @@ const Outter = styled(Box)`
   width: 90%;
   margin: 0 auto;
   border: 1px solid #656765;
-  background-color: #d6d2d1;
+  background-color: #fff;
   box-shadow: 5px 5px 5px 5px #404040;
   border-radius: 10px;
   text-align: center;
