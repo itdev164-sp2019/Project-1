@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
-import image1 from '../Images/images.png';
-import image2 from '../Images/Abstract_001.jpg';
-import image3 from '../Images/logo.svg';
-import image4 from '../Images/sponge.jpg';
+import { imageConfig } from '../config';
 import './App.css';
 import styled from 'styled-components';
 import Header from '../components/Elements/Header/Header';
-import Home from '../components/Home/Home.js';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import Gallery from '../components/Home/Gallery.js';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Modal from '../components/Modal/Modal';
 
 const Main = styled.div`
-  background-color: #64c1d2;
-  height: 500px;
+  background-color: #fff;
+  min-height: 1000px;
+  margin: 0 auto;
+  text-align: center;
 `;
-
-const Footer = styled.div`
-  background-color: #b5acb0;
-  height: 100px;
+const Footer = styled.footer`
+  min-height: 100px;
+  max-height: 200px;
+  background-color: white;
+  margin-top: 20px;
 `;
 
 class App extends Component {
@@ -26,9 +26,18 @@ class App extends Component {
 
     this.state = {
       images: {
-        images: [image1, image3, image2, image4, image1, image1, image1],
+        images: [
+          imageConfig.image1.src,
+          imageConfig.image2.src,
+          imageConfig.image3.src,
+          imageConfig.image4.src,
+          imageConfig.image5.src,
+          imageConfig.image6.src,
+          imageConfig.image7.src
+        ],
         index: 0
-      }
+      },
+      title: 'MY | MEME'
     };
   }
 
@@ -42,13 +51,13 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className='App'>
-          <Header />
+          <Header title={this.state.title} />
           <Main>
             <Route
               exact={true}
               path='/'
               render={() => (
-                <Home imgs={this.state.images.images} click={this.onClick} />
+                <Gallery imgs={this.state.images.images} click={this.onClick} />
               )}
             />
             <Route
@@ -61,7 +70,7 @@ class App extends Component {
             />
           </Main>
           <Footer>
-            <h2>Footer</h2>
+            <h2>&copy;2019 Browza Media</h2>
           </Footer>
         </div>
       </BrowserRouter>

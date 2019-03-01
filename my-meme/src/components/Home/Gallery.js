@@ -1,9 +1,9 @@
 import React from 'react';
 import Image from '../Image/Image';
 
-const Home = props =>
+const Gallery = props =>
   props.imgs.map((img, value) => (
     <Image img={img} click={props.click} index={value} />
   ));
 
-export default Home;
+export default Gallery;

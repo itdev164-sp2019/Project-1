@@ -1,93 +1,122 @@
 import React, { Component } from 'react';
 import { Flex, Box } from 'rebass';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import Form from '../Form/Form';
 
 const Outter = styled(Box)`
   width: 90%;
-  height: 100%;
   margin: 0 auto;
-  border: 1px solid white;
-  background-color: #64c1d2;
-  box-shadow: 3px 3px 3px 3px #b3b1b0;
-  margin-top: 5rem;
+  border: 1px solid #656765;
+  background-color: #d6d2d1;
+  box-shadow: 5px 5px 5px 5px #404040;
   border-radius: 10px;
   text-align: center;
+  margin-top: 1rem;
+  max-width: 900px;
 `;
 
-const Input = styled.input`
-  margin: 0.5rem, 0, 0.5rem, 0.5rem;
-  padding: 0.5rem;
+const Top = styled.div`
+  position: absolute;
+  top: 35%;
+  left: 15%;
+  font-size: 120%;
+  color: white;
+  font-family: 'Electrolize';
+  display: none;
 `;
 
-const Button = styled.button`
-  margin: 2rem;
-  cursor: pointer;
-  padding: 0.5rem;
+const Bottom = styled.div`
+  position: absolute;
+  bottom: 35%;
+  left: 15%;
+  font-size: 120%;
+  color: white;
+  font-family: 'Electrolize';
+  display: none;
 `;
 const Img = styled.div`
   cursor: pointer;
-  width: 30%;
-  height: 40vh;
-  float: left;
-  margin-top: 2rem;
-  position: relative;
+  width: 95%;
+  min-height: 55vh;
   background-position: center;
-  text-align: center;
   background-repeat: no-repeat;
+  margin: 0 auto;
+  margin-top: 2rem;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px 3px #404040;
+`;
+const Canvas = styled.canvas`
+  cursor: pointer;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px 3px #404040;
 `;
 
-const Top = styled.h1`
-  position: absolute;
-  top: 10%;
-  left: 30%;
-  display: inline-block;
+const CanImg = styled.img`
+  display: none;
+  width: 150%;
 `;
 
-const Bottom = styled.h1`
-  position: absolute;
-  bottom: 10%;
-  left: 30%;
-  display: inline-block;
-`;
-const Container = styled(Box)``;
 class Modal extends Component {
   constructor(props) {
     super(props);
     this.state = {
       image: props.img,
-      topVal: 'Top',
-      bottomVal: 'Bottom'
+      text: {
+        topVal: 'TOP',
+        bottomVal: 'BOTTOM'
+      }
     };
   }
+  componentDidMount = () => {
+    const canvas = this.refs.canvas;
+    const ctx = canvas.getContext('2d');
+    const canvasImg = this.refs.image;
+    canvasImg.onload = () => {
+      ctx.drawImage(canvasImg, 0, 0, window.innerWidth, window.innerHeight);
+      ctx.font = ' 50px Electrolize';
+      ctx.fillText(this.state.text.topVal, 210, 75);
+      ctx.fillText(this.state.text.bottomVal, 500, 75);
+    };
+  };
 
-  changeText = e => {};
+  fillText = () => {};
+
+  changeText = e => {
+    this.setState({
+      [e.currentTarget.name]: e.currentTarget.value
+    });
+  };
 
   render() {
     const imageStyle = {
       backgroundImage: 'url(' + this.state.image + ')',
       backgroundSize: '100%'
     };
+
     return (
-      <Flex width={1} alignItems='center'>
-        <Outter>
-          <Container width={1} mx={5} alignItems='center'>
-            <Img style={imageStyle}>
-              <Top>{this.state.topVal}</Top>
-              <Bottom>{this.state.bottomVal}</Bottom>
-            </Img>
-          </Container>
-          <Box width={[1 / 2, 1]} alignItems='center'>
-            <h2>Top Text</h2>
-            <Input id='1' placeholder='Top LINE OF MEME' />
-            <h2>Bottom Text</h2>
-            <Input id='2' placeholder='Bottom LINE OF MEME' />
-          </Box>
-          <Link to='/'>
-            <Button>Home Page</Button>
-          </Link>
-        </Outter>
-      </Flex>
+      <Outter>
+        {/*<Img style={imageStyle}>
+          
+    </Img>*/}
+        <Canvas
+          ref='canvas'
+          width={window.innerWidth}
+          height={window.innerHeight}
+        />
+        <Top ref='top'>{this.state.BottomVal}</Top>
+        <Bottom ref='bottom' />
+        <CanImg ref='image' src={this.state.image} />
+        <Box>
+          <Form changeText={this.changeText} download={this.downloadImage} />
+        </Box>
+      </Outter>
     );
   }
 }

@@ -5,10 +5,11 @@ import { Link } from 'react-router-dom';
 
 const Img = styled.img`
   cursor: pointer;
-  width: 10rem;
-  height: 20rem;
+  width: 15rem;
+  height: 15rem;
   float: left;
   margin: 1rem;
+  object-fit: cover;
 `;
 const Button = styled.button`
   background-color: black;
