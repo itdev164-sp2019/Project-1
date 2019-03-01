@@ -15,38 +15,6 @@ const Outter = styled(Box)`
   max-width: 900px;
 `;
 
-const Top = styled.div`
-  position: absolute;
-  top: 35%;
-  left: 15%;
-  font-size: 120%;
-  color: white;
-  font-family: 'Electrolize';
-  display: none;
-`;
-
-const Bottom = styled.div`
-  position: absolute;
-  bottom: 35%;
-  left: 15%;
-  font-size: 120%;
-  color: white;
-  font-family: 'Electrolize';
-  display: none;
-`;
-const Img = styled.div`
-  cursor: pointer;
-  width: 95%;
-  min-height: 55vh;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin: 0 auto;
-  margin-top: 2rem;
-  text-align: center;
-  border: 1px solid black;
-  border-radius: 10px;
-  box-shadow: 3px 3px 3px 3px #404040;
-`;
 const Canvas = styled.canvas`
   cursor: pointer;
   width: 90%;
@@ -68,10 +36,8 @@ class Modal extends Component {
     super(props);
     this.state = {
       image: props.img,
-      text: {
-        topVal: 'TOP',
-        bottomVal: 'BOTTOM'
-      }
+      topVal: '',
+      bottomVal: ''
     };
   }
   componentDidMount = () => {
@@ -80,13 +46,18 @@ class Modal extends Component {
     const canvasImg = this.refs.image;
     canvasImg.onload = () => {
       ctx.drawImage(canvasImg, 0, 0, window.innerWidth, window.innerHeight);
-      ctx.font = ' 50px Electrolize';
-      ctx.fillText(this.state.text.topVal, 210, 75);
-      ctx.fillText(this.state.text.bottomVal, 500, 75);
     };
   };
 
-  fillText = () => {};
+  componentDidUpdate = () => {
+    const canvas = this.refs.canvas;
+    const ctx = canvas.getContext('2d');
+    const canvasImg = this.refs.image;
+    ctx.drawImage(canvasImg, 0, 0, window.innerWidth, window.innerHeight);
+    ctx.font = ' 50px Electrolize';
+    ctx.fillText(this.state.topVal, 110, 75);
+    ctx.fillText(this.state.bottomVal, 110, 500);
+  };
 
   changeText = e => {
     this.setState({
@@ -102,19 +73,14 @@ class Modal extends Component {
 
     return (
       <Outter>
-        {/*<Img style={imageStyle}>
-          
-    </Img>*/}
         <Canvas
           ref='canvas'
           width={window.innerWidth}
           height={window.innerHeight}
         />
-        <Top ref='top'>{this.state.BottomVal}</Top>
-        <Bottom ref='bottom' />
         <CanImg ref='image' src={this.state.image} />
         <Box>
-          <Form changeText={this.changeText} download={this.downloadImage} />
+          <Form changeText={this.changeText} download={this.fillText} />
         </Box>
       </Outter>
     );

@@ -38,23 +38,22 @@ const Form = props => (
         name='topVal'
         id='1'
         placeholder='Top Text'
-        maxLength='25'
+        maxLength='50'
         onChange={props.changeText}
       />
       <Label name='label2'>Bottom</Label>
       <Input
-        name='BottomVal'
+        name='bottomVal'
         id='2'
         maxLength='25'
         placeholder='Bottom Text'
         onChange={props.changeText}
       />
-      <Button href='this.state.image' download>
-        Download MEME
-      </Button>
+
       <Link to='/'>
         <Button>Gallery</Button>
       </Link>
+      <Button>Download</Button>
     </FormEl>
   </Box>
 );

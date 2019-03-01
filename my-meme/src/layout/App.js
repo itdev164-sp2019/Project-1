@@ -9,7 +9,7 @@ import Modal from '../components/Modal/Modal';
 
 const Main = styled.div`
   background-color: #fff;
-  min-height: 1000px;
+  min-height: 800px;
   margin: 0 auto;
   text-align: center;
 `;
