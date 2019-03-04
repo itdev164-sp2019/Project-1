@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Flex, Box } from 'rebass';
+import { Flex } from 'rebass';
+import { Link } from 'react-router-dom';
 
 const Outter = styled(Flex)`
   background-color: #ffffff;
@@ -11,11 +12,17 @@ const Outter = styled(Flex)`
 const H1 = styled.h1`
   font-family: 'Electrolize';
   margin-left: 5%;
+  text-decoration: none;
+`;
+const HeadLink = styled(Link)`
+  text-decoration: none;
 `;
 const Header = props => (
-  <Outter>
-    <H1>{props.title}</H1>
-  </Outter>
+  <HeadLink to='/'>
+    <Outter>
+      <H1>{props.title}</H1>
+    </Outter>
+  </HeadLink>
 );
 
 export default Header;

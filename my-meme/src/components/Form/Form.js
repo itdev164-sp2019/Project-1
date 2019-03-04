@@ -8,8 +8,8 @@ const Button = styled.button`
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 10%;
-  background-color: #565545;
-  color: white;
+  background-color: #fff;
+  color: black;
   box-shadow: 2px 2px 2px 2px #aaa99d;
   width: 75%;
 `;
@@ -49,12 +49,11 @@ const Form = props => (
         placeholder='Bottom Text'
         onChange={props.changeText}
       />
-
-      <Link to='/'>
-        <Button>Gallery</Button>
-      </Link>
-      <Button>Download</Button>
+      <Button onClick={props.download}>Download</Button>
     </FormEl>
+    <Link to='/'>
+      <Button>Gallery</Button>
+    </Link>
   </Box>
 );
 

@@ -7,12 +7,12 @@ const Img = styled.img`
   cursor: pointer;
   width: 15rem;
   height: 15rem;
-  float: left;
   margin: 1rem;
   object-fit: cover;
+  float: left;
 `;
 const Button = styled.button`
-  background-color: black;
+  background-color: #fff;
 `;
 const Image = props => (
   <Link to='/Modal'>
