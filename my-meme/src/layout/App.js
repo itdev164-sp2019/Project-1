@@ -12,6 +12,7 @@ const Main = styled.div`
   min-height: 800px;
   margin: 0 auto;
   text-align: center;
+  padding: 3px;
 `;
 const Footer = styled.footer`
   min-height: 100px;
@@ -70,7 +71,7 @@ class App extends Component {
             />
           </Main>
           <Footer>
-            <h2>&copy;2019 Browza Media</h2>
+            <h2>&copy;2019 Papadakis Media</h2>
           </Footer>
         </div>
       </BrowserRouter>
