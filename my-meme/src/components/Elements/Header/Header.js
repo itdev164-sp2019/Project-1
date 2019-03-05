@@ -13,6 +13,11 @@ const H1 = styled.h1`
   font-family: 'Electrolize';
   margin-left: 5%;
   text-decoration: none;
+  font-size: 300%;
+  position: fixed;
+  background: -webkit-linear-gradient(#2fd, #000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 const HeadLink = styled(Link)`
   text-decoration: none;

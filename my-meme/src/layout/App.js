@@ -19,6 +19,12 @@ const Footer = styled.footer`
   max-height: 200px;
   background-color: white;
   margin-top: 20px;
+  font-family: 'Electrolize';
+  background: -webkit-linear-gradient(#2fd, #000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 150%;
+  text-transform: uppercase;
 `;
 
 class App extends Component {
@@ -34,7 +40,10 @@ class App extends Component {
           imageConfig.image4.src,
           imageConfig.image5.src,
           imageConfig.image6.src,
-          imageConfig.image7.src
+          imageConfig.image7.src,
+          imageConfig.image8.src,
+          imageConfig.image9.src,
+          imageConfig.image10.src
         ],
         index: 0
       },
@@ -71,7 +80,7 @@ class App extends Component {
             />
           </Main>
           <Footer>
-            <h2>&copy;2019 Papadakis Media</h2>
+            <h2>&copy;2019 Papadakis Design INC</h2>
           </Footer>
         </div>
       </BrowserRouter>

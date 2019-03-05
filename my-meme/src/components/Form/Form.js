@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Box, Flex } from 'rebass';
+import { Box } from 'rebass';
 import { Link } from 'react-router-dom';
 
 const Button = styled.button`
@@ -11,13 +11,15 @@ const Button = styled.button`
   background-color: #fff;
   color: black;
   box-shadow: 2px 2px 2px 2px #aaa99d;
-  width: 75%;
+  width: 125%;
 `;
 
 const Label = styled.label`
   font-family: 'Electrolize';
   font-weight: bold;
   margin-top: 5px;
+  margin: 0 auto;
+  text-align: center;
 `;
 
 const FormEl = styled.form`
@@ -26,12 +28,12 @@ const FormEl = styled.form`
 `;
 const Input = styled.input`
   padding: 0.5rem;
-  background-color: #9a9b99;
-  width: 90%;
+  background-color: #fff;
+  width: 150%;
 `;
 
 const Form = props => (
-  <Box width={[1 / 2]} mx={5} alignItems='center'>
+  <Box width={1 / 2} mx={5} alignItems='center'>
     <FormEl>
       <Label name='label1'>Top</Label>
       <Input
@@ -45,11 +47,13 @@ const Form = props => (
       <Input
         name='bottomVal'
         id='2'
-        maxLength='25'
+        maxLength='50'
         placeholder='Bottom Text'
         onChange={props.changeText}
       />
-      <Button onClick={props.download}>Download</Button>
+      <Link to='/'>
+        <Button onClick={props.download}>Download</Button>
+      </Link>
     </FormEl>
     <Link to='/'>
       <Button>Gallery</Button>
