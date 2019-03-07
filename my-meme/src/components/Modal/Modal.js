@@ -12,8 +12,9 @@ const Outter = styled(Box)`
   text-align: center;
   margin-top: 1rem;
   max-width: 600px;
-  min-width: 400px;
+  min-width: 340px;
   padding: 10px;
+  z-index: 10000;
 `;
 
 const Canvas = styled.canvas`
@@ -67,20 +68,22 @@ class Modal extends Component {
 
   downloadFile = e => {
     e.preventDefault();
-    const canvas = this.refs.canvas;
-    const canvasImg = this.refs.image;
-    const ctx = canvas.getContext('2d');
-    ctx.drawImage(canvasImg, 0, 0, window.innerWidth, window.innerHeight);
-    ctx.font = ' 50px Electrolize';
-    ctx.fillStyle = '#fff';
-    ctx.fillText(this.state.topVal, 50, 75, 700);
-    ctx.fillText(this.state.bottomVal, 50, 500, 700);
-    const canvasData = canvas.toDataURL('image/png');
-    const a = document.createElement('a');
-    a.download = 'meme.png';
-    a.href = canvasData;
-    document.body.appendChild(a);
-    a.click();
+    if (this.state.bottomVal != '' || this.state.topVal != '') {
+      const canvas = this.refs.canvas;
+      const canvasImg = this.refs.image;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(canvasImg, 0, 0, window.innerWidth, window.innerHeight);
+      ctx.font = ' 50px Electrolize';
+      ctx.fillStyle = '#fff';
+      ctx.fillText(this.state.topVal, 50, 75, 700);
+      ctx.fillText(this.state.bottomVal, 50, 500, 700);
+      const canvasData = canvas.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.download = 'meme.png';
+      a.href = canvasData;
+      document.body.appendChild(a);
+      a.click();
+    }
   };
 
   render() {
