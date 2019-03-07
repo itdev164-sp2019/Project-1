@@ -57,14 +57,17 @@ class App extends Component {
               exact={true}
               path='/'
               render={() => (
-                <Gallery imgs={...this.state.images.images} click={this.onClick} />
+                <Gallery
+                  imgs={[...this.state.images.images]}
+                  click={this.onClick}
+                />
               )}
             />
             <Route
               path='/Modal'
               render={() => (
                 <Modal
-                  img={this.state.images.images[this.state.images.index]}
+                  img={this.state.images.images[this.state.images.index].src}
                 />
               )}
             />
