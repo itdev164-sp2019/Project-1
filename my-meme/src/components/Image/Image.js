@@ -12,6 +12,7 @@ const Img = styled.img`
 `;
 const Button = styled.button`
   background-color: #fff;
+  box-shadow: 1px 1px 1px 1px #2fd;
 `;
 const Image = props => (
   <Link to='/Modal'>

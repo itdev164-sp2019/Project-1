@@ -7,11 +7,11 @@ const Button = styled.button`
   margin: 2px;
   cursor: pointer;
   padding: 0.5rem;
-  border-radius: 10%;
+  border-radius: 5%;
   background-color: #fff;
   color: black;
   box-shadow: 2px 2px 2px 2px #aaa99d;
-  width: 125%;
+  width: 100%;
 `;
 
 const Label = styled.label`
@@ -29,7 +29,7 @@ const FormEl = styled.form`
 const Input = styled.input`
   padding: 0.5rem;
   background-color: #fff;
-  width: 150%;
+  width: 100%;
 `;
 
 const Form = props => (

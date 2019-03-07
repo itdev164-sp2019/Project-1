@@ -47,7 +47,8 @@ class App extends Component {
         ],
         index: 0
       },
-      title: 'MY | MEME'
+      title: 'MY | MEME',
+      footText: '2019 Papadakis Design INC'
     };
   }
 
@@ -80,7 +81,7 @@ class App extends Component {
             />
           </Main>
           <Footer>
-            <h2>&copy;2019 Papadakis Design INC</h2>
+            <h2>&copy;{this.state.footText}</h2>
           </Footer>
         </div>
       </BrowserRouter>
